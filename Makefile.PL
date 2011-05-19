@@ -22,9 +22,15 @@ use inc::Module::Install;
 name 'Plack-App-CocProxy';
 all_from 'lib/Plack/App/CocProxy.pm';
 
-requires 'Exporter::Lite';
+requires 'Plack';
+requires 'Plack::App::Proxy';
+requires 'Plack::App::File';
 
-build_requires 'Test::Most';
+recommends 'Twiggy';
+
+build_requires 'Test::More';
+build_requires 'Test::TCP';
+build_requires 'Plack::Test';
 
 # Module::Install::AuthorTests
 author_tests('xt');

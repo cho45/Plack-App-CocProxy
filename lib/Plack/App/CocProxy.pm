@@ -28,8 +28,15 @@ sub call {
 sub locate_file {
 	my ($self, $env) = @_;
 
-	my $req = URI->new($env->{REQUEST_URI});
-	$env->{PATH_INFO} = $req->path;
+	my $req;
+	if ($env->{REQUEST_URI} =~ /^http/) {
+		$req = URI->new($env->{REQUEST_URI});
+		$env->{PATH_INFO} = $req->path;
+	} else {
+		$req = Plack::Request->new($env)->uri;
+		$env->{PATH_INFO}   = $req->path;
+		$env->{REQUEST_URI} = "$req";
+	}
 
 	my $path = $req->path;
 	my $host = $req->host;
