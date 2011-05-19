@@ -1,27 +1,33 @@
-This is Perl module Text::Xatena.
+NAME
+    Plack::App::CocProxy - proxy requests and replace by local file
 
-INSTALLATION
+SYNOPSIS
+      use Plack::App::CocProxy;
+      Plack::App::CocProxy->new(root => 'files');
 
-Plack::App::CocProxy installation is straightforward. If your CPAN shell is set up,
-you should just be able to do
+    or you can use this like:
 
-    % cpan Plack::App::CocProxy
+      plackup -MPlack::App::CocProxy -e 'Plack::App::CocProxy->new(root=>".")->to_app' -p 5432
 
-Download it, unpack it, then build it as per the usual:
+DESCRIPTION
+    Plack::App::CocProxy arrogates requests and redirect to local file under
+    rules based on request-URI.
 
-    % perl Makefile.PL
-    % make && make test
+    Example(root=>"."):
 
-Then install it:
+      http://example.com/
+      => ./index.html => ./example.com/index.html => (original url)
 
-    % make install
+      http://example.com/foo/bar.html
+      => ./bar.html => ./example.com/foo/bar.html => ./example.com/bar.html => ./foo/bar.html => (original url)
 
-DOCUMENTATION
+AUTHOR
+    cho45 <cho45@lowreal.net>
 
-Plack::App::CocProxy documentation is available as in POD. So you can do:
+SEE ALSO
+    Plack::App::Proxy, Plack::App::File, Plack
 
-    % perldoc Plack::App::CocProxy
+LICENSE
+    This library is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
 
-to read the documentation online with your favorite pager.
-
-cho45
