@@ -1,0 +1,4 @@
+#!/bin/sh
+
+PERL5LIB=lib plackup -MPlack::App::CocProxy -e 'Plack::App::CocProxy->new->to_app' -p 5432
+
