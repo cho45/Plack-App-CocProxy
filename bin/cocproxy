@@ -1,4 +1,23 @@
-#!/bin/sh
+#!/usr/bin/env perl
 
-PERL5LIB=lib twiggy -MPlack::App::CocProxy -e 'Plack::App::CocProxy->new->to_app' -p 5432
+use strict;
+use warnings;
+use opts;
+use AnyEvent;
+use Twiggy::Server;
+use Plack::App::CocProxy;
+use lib 'lib';
 
+opts my $root => { isa => Str => default => '.' },
+     my $host => { isa => Str => default => '127.0.0.1' },
+     my $port => { isa => Num => default => 5432 };
+
+my $server = Twiggy::Server->new(
+	host => $host,
+	port => $port,
+);
+$server->register_service(Plack::App::CocProxy->new(root => $root)->to_app);
+
+print "Proxy running at $host:$port\n";
+
+AE::cv->recv;
