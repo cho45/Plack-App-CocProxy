@@ -57,6 +57,9 @@ sub locate_file {
 	my $docroot = $self->root || ".";
 	for my $path (@paths) {
 		my $try = "$docroot/$path";
+		if (-l $try) {
+			$try = readlink($try);
+		}
 		if (-r $try) {
 			$env->{'psgi.errors'}->print(sprintf("Arrogated %s => %s\n", $req, $try));
 			return $try, undef;
