@@ -3,6 +3,9 @@
 	* 0.02:
 	Install 'cocproxy' command.
 	Fix tests.
+	* 0.03:
+	Make custamizable command-line tool.
+	Do readlink on symlink.
 
 2011-05-19  SATOH Hiroh <cho45@lowreal.net>
 
