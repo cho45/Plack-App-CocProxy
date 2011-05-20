@@ -22,6 +22,8 @@ use inc::Module::Install;
 name 'Plack-App-CocProxy';
 all_from 'lib/Plack/App/CocProxy.pm';
 
+install_script 'bin/cocproxy';
+
 requires 'Plack';
 requires 'Plack::App::Proxy';
 requires 'Plack::App::File';

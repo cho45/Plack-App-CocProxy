@@ -80,7 +80,11 @@ Plack::App::CocProxy - proxy requests and replace by local file
 
 or you can use this like:
 
-  plackup -MPlack::App::CocProxy -e 'Plack::App::CocProxy->new(root=>".")->to_app' -p 5432
+  $ twiggy -MPlack::App::CocProxy -e 'Plack::App::CocProxy->new(root=>".")->to_app' -p 5432
+
+or you can use installed simple script:
+
+  $ cocproxy # is same as above
 
 =head1 DESCRIPTION
 
