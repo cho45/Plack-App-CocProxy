@@ -3,7 +3,7 @@ package Plack::App::CocProxy;
 use strict;
 use warnings;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 use parent qw(Plack::App::File);
 use Plack::App::Proxy;
 use Plack::Util::Accessor qw/backend/;
