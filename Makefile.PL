@@ -28,7 +28,7 @@ requires 'Plack::App::Proxy';
 requires 'Plack::App::File';
 requires 'opts';
 
-recommends 'Twiggy';
+requires 'Starlet';
 
 build_requires 'Test::More';
 build_requires 'Test::TCP';
